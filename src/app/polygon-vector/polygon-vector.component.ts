@@ -6,7 +6,7 @@ import {
   NgZone,
   ChangeDetectorRef,
 } from "@angular/core";
-import {geoMercator, geoPath, select} from "d3";
+import {geoMercator, geoPath, select, zoom} from "d3";
 import {Point, Polygon} from "geojson";
 import {rewind} from "@turf/turf";
 
@@ -153,6 +153,14 @@ export class PolygonVectorComponent implements OnChanges, AfterViewInit {
     if (this.showPointLabels) {
       this.addPointLabelsToMap(this.svg, projection, polygon);
     }
+
+    const _zoom = zoom()
+      .scaleExtent([1, 10]) // Set zoom scale limits
+      .on('zoom', (event: any) => {
+        this.svg.attr('transform', event.transform);
+      });
+
+    this.svg.call(_zoom);
 
     this.cdRef.detectChanges();
   }

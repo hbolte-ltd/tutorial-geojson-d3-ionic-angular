@@ -5,7 +5,7 @@ computations within an Ionic and Angular framework, enhanced with D3 for visuali
 
 ## Overview
 
-We define a land plot using an irregular quadrilateral with four corners and compute its centroid using `turf.js`.
+We define a land plot using an **irregular quadrilateral** with four corners and compute its centroid using `turf.js`.
 The project uses TypeScript and GeoJSON format for the boundary and midpoint definitions. The example also integrates
 D3 for rendering visualizations within an Ionic Angular app.
 
