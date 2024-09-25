@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
-import {Point, Polygon} from "geojson";
+import {centroid} from "@turf/turf";
+import {Polygon} from "geojson";
 
 @Component({
   selector: "app-home",
@@ -20,8 +21,5 @@ export class HomePage {
     ],
   };
 
-  public centroid: Point = {
-    type: "Point",
-    coordinates: [100.523471, 13.7563],
-  };
+  public center = centroid(this.boundary).geometry;
 }
